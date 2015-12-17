@@ -12,7 +12,7 @@ public class Etiqueta {
     public static final String KEY_nombre = "nombre";
 
     // property help us to keep data
-    public int student_ID;
+    public int etiqueta_ID;
     public String nombre;
 
 }

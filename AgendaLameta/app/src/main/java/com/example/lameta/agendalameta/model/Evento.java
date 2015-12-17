@@ -15,7 +15,7 @@ public class Evento {
     public static final String KEY_hora = "hora";
 
     // property help us to keep data
-    public int student_ID;
+    public int evento_ID;
     public String nombre;
     //public String fecha;
     public String lugar;
