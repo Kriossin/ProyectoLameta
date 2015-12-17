@@ -1,4 +1,4 @@
-package com.example.bisquert.agendalameta.model;
+package com.example.lameta.agendalameta.model;
 
 /**
  * Created by Bisquert on 11/12/2015.

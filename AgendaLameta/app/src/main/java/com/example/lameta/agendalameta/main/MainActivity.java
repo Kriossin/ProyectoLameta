@@ -1,11 +1,11 @@
-package com.example.bisquert.agendalameta.main;
+package com.example.lameta.agendalameta.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.bisquert.agendalameta.R;
+import com.example.lameta.agendalameta.R;
 
 public class MainActivity extends AppCompatActivity {
 

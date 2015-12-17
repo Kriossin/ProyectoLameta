@@ -1,11 +1,11 @@
-package com.example.bisquert.agendalameta.connection;
+package com.example.lameta.agendalameta.connection;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.bisquert.agendalameta.model.Etiqueta;
-import com.example.bisquert.agendalameta.model.Evento;
+import com.example.lameta.agendalameta.model.Etiqueta;
+import com.example.lameta.agendalameta.model.Evento;
 
 public class DBHelper  extends SQLiteOpenHelper {
     //version number to upgrade database version
