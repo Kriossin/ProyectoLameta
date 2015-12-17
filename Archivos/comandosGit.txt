@@ -1,0 +1,23 @@
+git config --global user.name "Lucia" --> 1vez
+git config --global user.email "lferrerfct@gmail.com" -->1vez
+
+git init --> nuevo proyecto 1vez
+
+git clone http://..... --> para tener el mismo proyecto todos 1vez
+
+git remote add origin https://.... --> 1vez
+
+COMANDOS POR USAR SIEMPRE
+--------------------------------
+git add .
+git commit -m "comentario"
+git push origin master --> subir proyecto
+git pull origin master --> actualizar proyecto
+
+GitHub --> settings --> collaborators --> nombre --> add collaborators
+
+volver atras
+--------------------------
+git log --> te informa los cambios que has hecho
+
+git reset --hard numerodellog
