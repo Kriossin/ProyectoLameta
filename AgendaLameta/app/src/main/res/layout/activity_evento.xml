@@ -4,7 +4,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/nombre"
+        android:id="@+id/evento_Id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/nombre_evento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
