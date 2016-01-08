@@ -10,9 +10,11 @@ public class Etiqueta {
     // Labels Table Columns names
     public static final String KEY_ID = "id";
     public static final String KEY_nombre = "nombre";
+    public static final String KEY_ID_evento = "id_evento";
 
     // property help us to keep data
     public int etiqueta_ID;
     public String nombre;
+    public int id_evento;
 
 }

@@ -25,6 +25,7 @@ public class EtiquetaDAO {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Etiqueta.KEY_nombre, etiqueta.nombre);
+        values.put(Etiqueta.KEY_ID_evento, etiqueta.id_evento);
 
         //Inserting Row
         long etiqueta_id = db.insert(Etiqueta.TABLE, null, values);
@@ -45,6 +46,7 @@ public class EtiquetaDAO {
         ContentValues values = new ContentValues();
 
         values.put(Etiqueta.KEY_nombre, etiqueta.nombre);
+        values.put(Etiqueta.KEY_ID_evento, etiqueta.id_evento);
 
         //Es bueno para praacticar a usar el parametro ?, en vez de concatenar strings
         db.update(Etiqueta.TABLE, values, Etiqueta.KEY_ID + "= ?", new String[]{String.valueOf(etiqueta.etiqueta_ID)});
@@ -57,6 +59,7 @@ public class EtiquetaDAO {
         String selectQuery = "SELECT " +
                 Etiqueta.KEY_ID + "," +
                 Etiqueta.KEY_nombre +
+                Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE;
 
         //Etiqueta etiqueta = new Etiqueta();
@@ -86,6 +89,7 @@ public class EtiquetaDAO {
         String selectQuery = "SELECT " +
                 Etiqueta.KEY_ID + "," +
                 Etiqueta.KEY_nombre +
+                Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE +
                 " WHERE " + Etiqueta.KEY_nombre + " LIKE ?";
 
@@ -115,6 +119,7 @@ public class EtiquetaDAO {
         String selectQuery = "SELECT " +
                 Etiqueta.KEY_ID + "," +
                 Etiqueta.KEY_nombre +
+                Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE +
                 " WHERE " + Etiqueta.KEY_ID + "=?";
 
@@ -127,6 +132,7 @@ public class EtiquetaDAO {
             do {
                 etiqueta.etiqueta_ID = cursor.getInt(cursor.getColumnIndex(Etiqueta.KEY_ID));
                 etiqueta.nombre = cursor.getString(cursor.getColumnIndex(Etiqueta.KEY_nombre));
+                etiqueta.id_evento = cursor.getInt(cursor.getColumnIndex(Etiqueta.KEY_ID_evento));
 
             } while (cursor.moveToNext());
         }
