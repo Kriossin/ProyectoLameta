@@ -66,9 +66,10 @@ public class MainActivity extends ListActivity {
     }
 
     public void listaEventos(){
-        EventoDAO studentDAO = new EventoDAO(this);
 
-        ArrayList<HashMap<String, String>> eventoLista =  EventoDAO.getListaEvento();
+        EventoDAO eventoDAO = new EventoDAO(this);
+
+        ArrayList<HashMap<String, String>> eventoLista =  eventoDAO.getListaEvento();
 
 
         if(eventoLista.size()!=0) {
@@ -96,13 +97,14 @@ public class MainActivity extends ListActivity {
 
             getListView().setVisibility(View.GONE);
 
-            Toast.makeText(this, "No hay eventos!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No hay eventos", Toast.LENGTH_SHORT).show();
         }
     }
     public void listaEventosPorNombre(String nombre){
-        EventoDAO studentDAO = new EventoDAO(this);
 
-        ArrayList<HashMap<String, String>> eventoLista =  EventoDAO.getListaEventoPorNombre(nombre);
+        EventoDAO eventoDAO = new EventoDAO(this);
+
+        ArrayList<HashMap<String, String>> eventoLista =  eventoDAO.getListaEventoPorNombre(nombre);
 
 
         if(eventoLista.size()!=0) {
@@ -130,10 +132,81 @@ public class MainActivity extends ListActivity {
 
             getListView().setVisibility(View.GONE);
 
-            Toast.makeText(this, "No hay eventos!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No hay eventos con ese nombre", Toast.LENGTH_SHORT).show();
         }
     }
+    public void listaEventosPorLugar(String lugar){
 
+        EventoDAO eventoDAO = new EventoDAO(this);
+
+        ArrayList<HashMap<String, String>> eventoLista =  eventoDAO.getListaEventoPorLugar(lugar);
+
+
+        if(eventoLista.size()!=0) {
+
+            ListView listView = getListView();
+            getListView().setVisibility(View.VISIBLE);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                    evento_ID = (TextView) view.findViewById(R.id.evento_Id);
+                    String eventoId = evento_ID.getText().toString();
+                    Intent objIndent = new Intent(getApplicationContext(),EventoDetail.class);
+                    objIndent.putExtra("evento_Id", Integer.parseInt(eventoId));
+                    startActivity(objIndent);
+                }
+            });
+
+            //id y nombre llamados igual que en evento ´DAO REcordar!!
+            ListAdapter adapter = new SimpleAdapter(MainActivity.this,eventoLista, R.layout.activity_evento, new String[] { "id","lugar"}, new int[] {R.id.evento_Id, R.id.lugar});
+            setListAdapter(adapter);
+
+
+        }else{
+
+            getListView().setVisibility(View.GONE);
+
+            Toast.makeText(this, "No hay eventos con ese lugar", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void listaEventosPorEtiqueta(String etiqueta){
+
+        EventoDAO eventoDAO = new EventoDAO(this);
+
+        ArrayList<HashMap<String, String>> eventoLista =  eventoDAO.getListaEventoPorEtiqueta(etiqueta);
+
+
+        if(eventoLista.size()!=0) {
+
+            ListView listView = getListView();
+            getListView().setVisibility(View.VISIBLE);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                    evento_ID = (TextView) view.findViewById(R.id.evento_Id);
+                    String eventoId = evento_ID.getText().toString();
+                    Intent objIndent = new Intent(getApplicationContext(),EventoDetail.class);
+                    objIndent.putExtra("evento_Id", Integer.parseInt(eventoId));
+                    startActivity(objIndent);
+                }
+            });
+
+        //id y nombre llamados igual que en evento ´DAO REcordar!!
+            ListAdapter adapter = new SimpleAdapter(MainActivity.this,eventoLista, R.layout.activity_evento, new String[] { "id","etiqueta"}, new int[] {R.id.evento_Id, R.id.etiqueta});
+            setListAdapter(adapter);
+
+
+        }else{
+
+            getListView().setVisibility(View.GONE);
+
+            Toast.makeText(this, "No hay eventos con esa etiqueta", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 
