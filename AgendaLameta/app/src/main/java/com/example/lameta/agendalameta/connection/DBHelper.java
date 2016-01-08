@@ -27,7 +27,7 @@ public class DBHelper  extends SQLiteOpenHelper {
         String CREATE_TABLE_EVENTO = "CREATE TABLE " + Evento.TABLE  + "("
                 + Evento.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Evento.KEY_nombre + " TEXT, "
-                // + Evento.KEY_fecha + " INTEGER, " AQUI HAY QUE PONER QUE LO GUARDE EN EL DIA COMO CALENDAR, YA LO BUSCARE
+                + Evento.KEY_fecha + " TEXT, "
                 + Evento.KEY_lugar + " TEXT, "
                 + Evento.KEY_hora + " TEXT )";
 
@@ -35,7 +35,8 @@ public class DBHelper  extends SQLiteOpenHelper {
 
         String CREATE_TABLE_ETIQUETA = "CREATE TABLE " + Etiqueta.TABLE  + "("
                 + Etiqueta.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + Etiqueta.KEY_nombre + " TEXT )";
+                + Etiqueta.KEY_nombre + " TEXT "
+                + Etiqueta.KEY_ID_evento + "INTEGER)";
 
         db.execSQL(CREATE_TABLE_ETIQUETA);
 
