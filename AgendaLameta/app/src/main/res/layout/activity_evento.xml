@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
 
     <TextView
@@ -17,6 +17,10 @@
         android:textSize="20sp"
         android:text="Evento"
         android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
 
         />
 
@@ -26,11 +30,13 @@
         android:id="@+id/fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nombre"
         android:textSize="20sp"
         android:text="Fecha"
         android:inputType="date"
-        />
+        android:layout_below="@+id/nombre_evento"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+       />
 
 
 
@@ -40,8 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/fecha"
         android:textSize="20sp"
-        android:text="lugar"
+        android:text="Lugar"
         android:inputType="text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         />
 
     <TextView
@@ -50,8 +58,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lugar"
         android:textSize="20sp"
-        android:text="hora"
+        android:text="Hora"
         android:inputType="time"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         />
 
     <TextView
@@ -60,8 +70,68 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/hora"
         android:textSize="20sp"
-        android:text="etiqueta"
+        android:text="Etiqueta"
         android:inputType="text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_Evento"
+        android:inputType="textPersonName"
+        android:layout_above="@+id/fecha"
+        android:layout_toRightOf="@+id/nombre_evento"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_Fecha"
+        android:layout_above="@+id/lugar"
+        android:inputType="date"
+        android:layout_toRightOf="@+id/fecha"
+        android:layout_alignRight="@+id/editText_Evento"
+        android:layout_alignEnd="@+id/editText_Evento"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/editText_Lugar"
+        android:layout_alignBottom="@+id/lugar"
+        android:layout_alignLeft="@+id/editText_Fecha"
+        android:layout_alignStart="@+id/editText_Fecha"
+        android:layout_alignRight="@+id/editText_Fecha"
+        android:layout_alignEnd="@+id/editText_Fecha"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:id="@+id/editText_hora"
+        android:layout_alignBottom="@+id/hora"
+        android:layout_alignLeft="@+id/editText_Lugar"
+        android:layout_alignStart="@+id/editText_Lugar"
+        android:layout_alignRight="@+id/editText_Lugar"
+        android:layout_alignEnd="@+id/editText_Lugar"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/editText_Etiqueta"
+        android:layout_alignBottom="@+id/etiqueta"
+        android:layout_alignLeft="@+id/editText_hora"
+        android:layout_alignStart="@+id/editText_hora"
+        android:layout_alignRight="@+id/editText_hora"
+        android:layout_alignEnd="@+id/editText_hora"
+
         />
 
     <Button
@@ -69,12 +139,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Borrar"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:layout_alignTop="@+id/guardar"
+        android:layout_alignRight="@+id/editText_Fecha"
+        android:layout_alignEnd="@+id/editText_Fecha"
+        android:layout_marginRight="65dp"
+        android:layout_marginEnd="65dp" />
     <Button
-        android:id="@+id/modificar"
+        android:id="@+id/guardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modificar"
-       />
+        android:text="Guardar"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/hora"
+        android:layout_toEndOf="@+id/hora" />
 
-</LinearLayout>
+
+
+</RelativeLayout>
