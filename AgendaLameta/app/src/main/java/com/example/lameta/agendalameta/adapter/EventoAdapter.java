@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class EventoAdapter extends ArrayList<Evento>{
 
-    private TextView evento;
+   /* private TextView evento;
     private TextView descripcion;
     private TextView descripcionInf;
     private ArrayList<Evento> datos;
@@ -43,7 +43,7 @@ public class EventoAdapter extends ArrayList<Evento>{
 
 
         return item;
-    }
+    }*/
 
 
 }

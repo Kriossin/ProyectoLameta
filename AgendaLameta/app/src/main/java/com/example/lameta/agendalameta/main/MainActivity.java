@@ -28,7 +28,6 @@ import java.util.HashMap;
 public class MainActivity extends ListActivity {
     Button botonAnyadir;
     TextView evento_ID;
-    EditText buscador;
 
     public void onClick(View view) {
         if (view== findViewById(R.id.botonAñadir)){
@@ -49,14 +48,14 @@ public class MainActivity extends ListActivity {
         botonAnyadir = (Button) findViewById(R.id.botonAñadir);
        // botonAnyadir.setOnClickListener(this);
 
-        buscador = (EditText) findViewById(R.id.busqueda);
+       /* buscador = (EditText) findViewById(R.id.busqueda);
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 listaEventosPorNombre(buscador.getText().toString());
                 return true;
             }
-        });
+        });*/
     }
     //mostrar activity al volver
     public void onResume()
