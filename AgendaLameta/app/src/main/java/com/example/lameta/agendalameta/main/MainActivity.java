@@ -54,6 +54,9 @@ public class MainActivity extends ListActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth){
 
                 Toast.makeText(getApplicationContext(), dayOfMonth + "/" + (month+1) + "/" + year, Toast.LENGTH_SHORT).show();
+                dia = dayOfMonth;
+                mes = month;
+                anyo = year;
 
             }
         });
@@ -69,7 +72,6 @@ public class MainActivity extends ListActivity {
       /*  buscador = (EditText) findViewById(R.id.busqueda);
 =======
        /* buscador = (EditText) findViewById(R.id.busqueda);
->>>>>>> 44ca2530e0dc676dc6f315ed2e327b6b0d486d7d
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
