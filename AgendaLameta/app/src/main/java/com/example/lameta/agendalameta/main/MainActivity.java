@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -29,6 +30,7 @@ public class MainActivity extends ListActivity {
     Button botonAnyadir;
     TextView evento_ID;
     EditText buscador;
+    CalendarView calendar;
 
     public void onClick(View view) {
         if (view== findViewById(R.id.botonAñadir)){
@@ -46,17 +48,30 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        calendar = (CalendarView) findViewById(R.id.calendarView1);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth){
+
+                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
+
         botonAnyadir = (Button) findViewById(R.id.botonAñadir);
        // botonAnyadir.setOnClickListener(this);
 
-        buscador = (EditText) findViewById(R.id.busqueda);
+      /*  buscador = (EditText) findViewById(R.id.busqueda);
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 listaEventosPorNombre(buscador.getText().toString());
                 return true;
             }
-        });
+        });*/
     }
     //mostrar activity al volver
     public void onResume()

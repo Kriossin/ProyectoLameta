@@ -23,7 +23,7 @@ public class EventoAdapter extends ArrayList<Evento>{
     private Context context;
 
     public EventoAdapter(Context context, ArrayList<Evento> datos){
-        super(context, R.layout.listitem_dia, datos);
+      /*  super(context, R.layout.listitem_dia, datos);
         this.datos = datos;
         this.context= context;
 
@@ -41,7 +41,7 @@ public class EventoAdapter extends ArrayList<Evento>{
 
 
 
-        return item;
+        return item;*/
     }
 
 
