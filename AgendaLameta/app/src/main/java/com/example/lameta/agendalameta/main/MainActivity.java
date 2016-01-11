@@ -14,6 +14,8 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,17 +30,22 @@ import java.util.HashMap;
 
 public class MainActivity extends ListActivity {
     Button botonAnyadir;
+    Button botonir;
+
     TextView evento_ID;
     EditText buscador;
     CalendarView calendar;
     static int dia, mes, anyo;
 
-    public void onClick(View view) {
-        if (view== findViewById(R.id.botonAñadir)){
 
-            Intent intent = new Intent(this,EventoDetail.class);
-            intent.putExtra("evento_ID",0);
+    SearchView search;
+
+    public void CalendarClick(View view) {
+        if (view== findViewById(R.id.calendarView1)){
+
+            Intent intent = new Intent(getApplicationContext(),EventoDetail.class);
             startActivity(intent);
+            Toast.makeText(this, "holaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
 
         }else{
             listaEventos();
@@ -50,18 +57,68 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
 
         calendar = (CalendarView) findViewById(R.id.calendarView1);
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth){
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + (month+1) + "/" + year, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + (month + 1) + "/" + year, Toast.LENGTH_SHORT).show();
                 dia = dayOfMonth;
                 mes = month;
                 anyo = year;
 
+
+
+            }
+        });
+
+        botonir= (Button) findViewById(R.id.ir);
+
+        botonir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EventoDetail.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "holaaaaaaaaaaaaaaaaaa", Toast.LENGTH_LONG).show();
             }
         });
 
 
+
+        search=(SearchView) findViewById(R.id.busqueda);
+        search.setQueryHint("SearchView");
+
+        //*** setOnQueryTextFocusChangeListener ***
+        search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // TODO Auto-generated method stub
+
+                Toast.makeText(getBaseContext(), String.valueOf(hasFocus),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //*** setOnQueryTextListener ***
+        search.setOnQueryTextListener(new OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO Auto-generated method stub
+
+                Toast.makeText(getBaseContext(), query,
+                        Toast.LENGTH_SHORT).show();
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO Auto-generated method stub
+
+                //	Toast.makeText(getBaseContext(), newText, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
 
 
@@ -70,7 +127,6 @@ public class MainActivity extends ListActivity {
 
 
       /*  buscador = (EditText) findViewById(R.id.busqueda);
-=======
        /* buscador = (EditText) findViewById(R.id.busqueda);
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
