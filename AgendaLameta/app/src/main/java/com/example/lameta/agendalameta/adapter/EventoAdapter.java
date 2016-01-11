@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lameta.agendalameta.R;
 import com.example.lameta.agendalameta.model.Evento;
 
 import java.util.ArrayList;

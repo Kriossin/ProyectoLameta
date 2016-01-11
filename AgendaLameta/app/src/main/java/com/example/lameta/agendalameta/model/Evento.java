@@ -17,7 +17,7 @@ public class Evento {
     // property help us to keep data
     public int evento_ID;
     public String nombre;
-    //public String fecha;
+    public String fecha;
     public String lugar;
     public String hora;
 
