@@ -29,7 +29,7 @@ public class EventoDetail extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evento);
 
-        btnModificar = (Button) findViewById(R.id.modificar);
+        btnModificar = (Button) findViewById(R.id.guardar);
         btnBorrar = (Button) findViewById(R.id.borrar);
 
       //  btnModificar.setOnClickListener(this);
@@ -49,7 +49,7 @@ public class EventoDetail extends ActionBarActivity {
     }
 
     public void onClick(View v) {
-        if (v == findViewById(R.id.modificar)) {
+        if (v == findViewById(R.id.guardar)) {
           //  EventoDAO eventoDAO = new EventoDAO(this);
             Evento evento = new Evento();
 
