@@ -31,6 +31,7 @@ public class MainActivity extends ListActivity {
     TextView evento_ID;
     EditText buscador;
     CalendarView calendar;
+    static int dia, mes, anyo;
 
     public void onClick(View view) {
         if (view== findViewById(R.id.botonAñadir)){
@@ -52,7 +53,7 @@ public class MainActivity extends ListActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth){
 
-                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + (month+1) + "/" + year, Toast.LENGTH_SHORT).show();
 
             }
         });
