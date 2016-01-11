@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lameta.agendalameta.R;
 import com.example.lameta.agendalameta.model.Evento;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class EventoAdapter extends ArrayList<Evento>{
 
-    private TextView evento;
+   /* private TextView evento;
     private TextView descripcion;
     private TextView descripcionInf;
     private ArrayList<Evento> datos;
@@ -41,8 +42,13 @@ public class EventoAdapter extends ArrayList<Evento>{
 
 
 
+<<<<<<< HEAD
         return item;*/
     }
+=======
+        return item;
+    }*/
+>>>>>>> 44ca2530e0dc676dc6f315ed2e327b6b0d486d7d
 
 
 }

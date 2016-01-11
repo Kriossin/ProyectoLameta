@@ -64,7 +64,11 @@ public class MainActivity extends ListActivity {
         botonAnyadir = (Button) findViewById(R.id.botonAñadir);
        // botonAnyadir.setOnClickListener(this);
 
+
       /*  buscador = (EditText) findViewById(R.id.busqueda);
+=======
+       /* buscador = (EditText) findViewById(R.id.busqueda);
+>>>>>>> 44ca2530e0dc676dc6f315ed2e327b6b0d486d7d
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
