@@ -212,4 +212,36 @@ public class EventoDAO {
 
     }
 
+    public ArrayList<HashMap<String, String>>  getListaEventoPorFecha(String nameFechaSearch) {
+        //Open connection to read only
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery =  "SELECT  " +
+                Evento.KEY_ID + "," +
+                Evento.KEY_nombre + "," +
+                Evento.KEY_lugar + "," +
+                Evento.KEY_hora +
+                " FROM " + Evento.TABLE +
+                "WHERE " + Evento.KEY_fecha + " LIKE ?";
+
+        ArrayList<HashMap<String, String>> eventoList = new ArrayList<HashMap<String, String>>();
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {"%" + nameFechaSearch + "%"});
+        // looping through all rows and adding to list
+
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> evento = new HashMap<String, String>();
+                evento.put("id", cursor.getString(cursor.getColumnIndex(Evento.KEY_ID)));
+                evento.put("name", cursor.getString(cursor.getColumnIndex(Evento.KEY_nombre)));
+                eventoList.add(evento);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return eventoList;
+
+    }
+
 }
