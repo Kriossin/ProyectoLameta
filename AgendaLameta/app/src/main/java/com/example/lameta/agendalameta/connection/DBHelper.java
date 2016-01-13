@@ -11,7 +11,7 @@ public class DBHelper  extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     // Database Name
     private static final String DATABASE_NAME = "agenda.db";
@@ -35,8 +35,9 @@ public class DBHelper  extends SQLiteOpenHelper {
 
         String CREATE_TABLE_ETIQUETA = "CREATE TABLE " + Etiqueta.TABLE  + "("
                 + Etiqueta.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + Etiqueta.KEY_nombre + " TEXT "
-                + Etiqueta.KEY_ID_evento + " INTEGER)";
+                + Etiqueta.KEY_nombre + " TEXT, "
+                + Etiqueta.KEY_ID_evento + " INTEGER,"
+                + "FOREIGN KEY (" +Etiqueta.KEY_ID_evento+") REFERENCES " +Evento.TABLE + "(" +Evento.KEY_ID+ ") ON DELETE CASCADE ON UPDATE CASCADE)";
 
         db.execSQL(CREATE_TABLE_ETIQUETA);
 

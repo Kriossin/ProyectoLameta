@@ -73,19 +73,9 @@ public class DiaDetail extends ListActivity {
             eventoLista = eventoDAO.getListaEventoPorFecha(MainActivity.fecha);
         }
         else {
-            eventoLista = eventoDAO.getListaEventoPorNombre(MainActivity.buscador);
+            eventoLista = eventoDAO.getListaEventoPorBuscador(MainActivity.buscador);
             Log.v("buscador", "nombre");
-            if (eventoLista.size()==0){
-                eventoLista = eventoDAO.getListaEventoPorEtiqueta(MainActivity.buscador);
-                Log.v("buscador", "etiqueta");
-                if (eventoLista.size()==0) {
-                    eventoLista = eventoDAO.getListaEventoPorLugar(MainActivity.buscador);
-                    Log.v("buscador", "lugar");
-                    if (eventoLista.size()==0) {
-                        Toast.makeText(this, "No hay eventos", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
+
         }
 
 
@@ -101,7 +91,7 @@ public class DiaDetail extends ListActivity {
                     evento_ID = (TextView) view.findViewById(R.id.evento_Id);
                     String eventoId = evento_ID.getText().toString();
                     Intent objIndent = new Intent(getApplicationContext(),EventoDetail.class);
-                    objIndent.putExtra("evento_Id", Integer.parseInt(eventoId));
+                    objIndent.putExtra("evento_Id", Integer.parseInt(eventoId));//ME ACUERDO
                     startActivity(objIndent);
                 }
             });
