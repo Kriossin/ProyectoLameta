@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginRight="10dp"
+   >
 
 
     <TextView
@@ -23,7 +24,6 @@
         android:layout_below="@+id/evento_Id"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-0
 
 
     <TextView
@@ -77,15 +77,14 @@
         android:layout_marginTop="26dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/editText_Evento"
         android:inputType="textPersonName"
         android:textSize="25sp"
         android:layout_above="@+id/fecha"
-        android:layout_toRightOf="@+id/borrar"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginLeft="100dp"
+         />
 
     <EditText
         android:layout_width="wrap_content"
@@ -93,67 +92,69 @@
         android:id="@+id/editText_Fecha"
         android:layout_above="@+id/lugar"
         android:inputType="date"
+        android:textSize="25sp"
         android:layout_alignRight="@+id/editText_Evento"
         android:layout_alignEnd="@+id/editText_Evento"
-        android:layout_toRightOf="@+id/borrar"
-        android:layout_toEndOf="@+id/borrar" />
+        android:layout_alignLeft="@+id/editText_Evento"
+        android:layout_alignStart="@+id/editText_Evento" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:id="@+id/editText_Lugar"
+        android:textSize="25sp"
         android:layout_alignBottom="@+id/lugar"
         android:layout_alignRight="@+id/editText_Fecha"
         android:layout_alignEnd="@+id/editText_Fecha"
-        android:layout_toRightOf="@+id/borrar"
-        android:layout_toEndOf="@+id/borrar" />
+        android:layout_alignLeft="@+id/editText_Fecha"
+        android:layout_alignStart="@+id/editText_Fecha" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
         android:id="@+id/editText_hora"
+        android:textSize="25sp"
         android:layout_alignBottom="@+id/hora"
         android:layout_alignRight="@+id/editText_Lugar"
         android:layout_alignEnd="@+id/editText_Lugar"
-        android:layout_toRightOf="@+id/borrar"
-        android:layout_toEndOf="@+id/borrar" />
+        android:layout_alignLeft="@+id/editText_Lugar"
+        android:layout_alignStart="@+id/editText_Lugar" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:id="@+id/editText_Etiqueta"
+        android:textSize="25sp"
         android:layout_alignBottom="@+id/etiqueta"
         android:layout_alignRight="@+id/editText_hora"
         android:layout_alignEnd="@+id/editText_hora"
-
-        android:layout_toEndOf="@+id/borrar"
-        android:layout_toRightOf="@+id/borrar" />
+        android:layout_alignLeft="@+id/editText_hora"
+        android:layout_alignStart="@+id/editText_hora" />
 
     <Button
         android:id="@+id/borrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Borrar"
+        android:textSize="25sp"
+        android:background="@drawable/botonCancelar"
         android:layout_marginTop="76dp"
         android:layout_below="@+id/etiqueta"
-        android:layout_toRightOf="@+id/hora"
-        android:layout_toEndOf="@+id/hora" />
+        android:layout_toRightOf="@+id/hora" />
 
     <Button
         android:id="@+id/guardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
+        android:background="@drawable/botonGuardar"
         android:layout_gravity="right"
-
+        android:textSize="20sp"
         android:layout_alignTop="@+id/borrar"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="60dp"
-        android:layout_marginEnd="60dp" />
+        android:layout_toRightOf="@+id/borrar"
+        android:layout_toEndOf="@+id/borrar" />
 
 
 
