@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 /**
  * Created by Bisquert on 11/12/2015.
  */
-public class EventoDetail extends ActionBarActivity implements android.view.View.OnClickListener{
+public class EventoDetail extends AppCompatActivity implements android.view.View.OnClickListener{
     Button btnGuardar, btnBorrar;
     EditText editEvento, editFecha, editLugar, editHora, editEtiqueta;
     private int Evento_Id=0;

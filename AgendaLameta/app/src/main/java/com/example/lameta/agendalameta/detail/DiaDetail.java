@@ -20,13 +20,11 @@ import com.example.lameta.agendalameta.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by Roxas on 12/01/2016.
- */
+
 public class DiaDetail extends ListActivity implements android.view.View.OnClickListener{
 
     Button btnAnyadir;
-    TextView tvDia_id, evento_ID;
+    TextView tituloDia, evento_ID;
     String sDia, fecha;
 
     @Override
@@ -46,14 +44,20 @@ public class DiaDetail extends ListActivity implements android.view.View.OnClick
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dia);
+
         btnAnyadir = (Button) findViewById(R.id.botonCrear);
         btnAnyadir.setOnClickListener(this);
+
+        tituloDia = (TextView) findViewById(R.id.dia);
+        tituloDia.setText(fecha);
+
         Bundle extra = getIntent().getExtras();
         if(extra!=null){
             fecha = extra.getString("fecha");
         }
 
         listaEventos();
+
     }
 
     @Override
