@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.lameta.agendalameta.DAO.EventoDAO;
 import com.example.lameta.agendalameta.R;
-import com.example.lameta.agendalameta.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

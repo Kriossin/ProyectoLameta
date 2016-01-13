@@ -30,9 +30,7 @@ import com.example.lameta.agendalameta.model.Evento;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends ActionBarActivity {
-
-    Button botonCrear;
+public class MainActivity extends AppCompatActivity {
 
     Button botonir;
     TextView evento_ID;
@@ -40,11 +38,10 @@ public class MainActivity extends ActionBarActivity {
     CalendarView calendar;
     static int dia, mes, anyo;
     public static String fecha;
-
-
     SearchView search;
 
-    public void CalendarClick(View view) {//no va
+    /*no funciona: capturar dia sin boton IR*/
+   /* public void CalendarClick(View view) {//no va
         if (view== findViewById(R.id.calendarView1)){
 
             Intent intent = new Intent(getApplicationContext(),EventoDetail.class);
@@ -54,12 +51,13 @@ public class MainActivity extends ActionBarActivity {
         }else{
             //  listaEventos();
         }
-    }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*metodo capturar el dia del calendario*/
         calendar = (CalendarView) findViewById(R.id.calendarView1);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
@@ -75,8 +73,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        /*Ir al activity dia*/
         botonir= (Button) findViewById(R.id.ir);
-
         botonir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,9 +86,11 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
-
+        /*buscador*/
         search=(SearchView) findViewById(R.id.busqueda);
         search.setQueryHint("SearchView");
+
+        /*buscador: metodos capturar la busqueda*/
 
         //*** setOnQueryTextFocusChangeListener ***
         search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
@@ -125,11 +125,8 @@ public class MainActivity extends ActionBarActivity {
                 return false;
             }
         });
-        
-        botonCrear = (Button) findViewById(R.id.botonCrear);
-       // botonAnyadir.setOnClickListener(this);
 
-      /*  buscador = (EditText) findViewById(R.id.busqueda);
+
        /* buscador = (EditText) findViewById(R.id.busqueda);
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -169,7 +166,7 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(objIndent);
                 }
             });
-//id y nombre llamados igual que en evento ´DAO REcordar!!
+            //id y nombre llamados igual que en eventoDAO Recordar!!
             ListAdapter adapter = new SimpleAdapter(MainActivity.this,eventoLista, R.layout.activity_evento, new String[] { "id","name"}, new int[] {R.id.evento_Id, R.id.nombre_evento});
             setListAdapter(adapter);
 
@@ -204,7 +201,6 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(objIndent);
                 }
             });
-//id y nombre llamados igual que en evento ´DAO REcordar!!
             ListAdapter adapter = new SimpleAdapter(MainActivity.this,eventoLista, R.layout.activity_evento, new String[] { "id","name"}, new int[] {R.id.evento_Id, R.id.nombre_evento});
             setListAdapter(adapter);
 
@@ -240,7 +236,6 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
 
-            //id y nombre llamados igual que en evento ´DAO REcordar!!
             ListAdapter adapter = new SimpleAdapter(MainActivity.this,eventoLista, R.layout.activity_evento, new String[] { "id","lugar"}, new int[] {R.id.evento_Id, R.id.lugar});
             setListAdapter(adapter);
 
@@ -276,7 +271,6 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
 
-        //id y nombre llamados igual que en evento ´DAO REcordar!!
             ListAdapter adapter = new SimpleAdapter(MainActivity.this,eventoLista, R.layout.activity_evento, new String[] { "id","etiqueta"}, new int[] {R.id.evento_Id, R.id.etiqueta});
             setListAdapter(adapter);
 

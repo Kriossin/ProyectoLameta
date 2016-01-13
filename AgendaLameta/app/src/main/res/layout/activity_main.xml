@@ -33,13 +33,12 @@
             android:layout_alignParentEnd="true" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Ir"
             android:id="@+id/ir"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:background="@drawable/boton_siguiente"
+            android:layout_above="@+id/calendarView1" />
 
     </RelativeLayout>
 

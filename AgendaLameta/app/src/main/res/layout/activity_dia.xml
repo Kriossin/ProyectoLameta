@@ -7,13 +7,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lunes 17/12/2015"
+        android:text=""
         android:id="@+id/dia"
         android:layout_gravity="center_horizontal"
-        android:textColor="#8858b2"
+        android:textColor="#64b258"
         android:textSize="30dp"/>
-
-<!--crear un adapterEvento y crear una lista -->
 
     <ListView
         android:id="@android:id/list"
@@ -23,13 +21,12 @@
 
     <Button
     android:id="@+id/botonCrear"
-    android:layout_width="wrap_content"
-    android:layout_height="71dp"
+    android:layout_width="70dp"
+    android:layout_height="70dp"
     android:layout_gravity="right"
     android:background="@drawable/button2"
     android:layout_marginBottom="24dp"
-    android:layout_marginRight="24dp"
-    />
+    android:layout_marginRight="24dp" />
 
 
 </LinearLayout>
