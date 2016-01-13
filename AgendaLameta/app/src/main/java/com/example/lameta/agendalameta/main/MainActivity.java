@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends ListActivity {
-    Button botonAnyadir;
+    Button botonCrear;
     Button botonir;
 
     TextView evento_ID;
@@ -122,7 +122,7 @@ public class MainActivity extends ListActivity {
 
 
 
-        botonAnyadir = (Button) findViewById(R.id.botonAñadir);
+        botonCrear = (Button) findViewById(R.id.botonCrear);
        // botonAnyadir.setOnClickListener(this);
 
 
