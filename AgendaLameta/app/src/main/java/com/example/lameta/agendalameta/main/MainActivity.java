@@ -125,9 +125,8 @@ public class MainActivity extends ActionBarActivity {
                 return false;
             }
         });
-        
-        botonCrear = (Button) findViewById(R.id.botonCrear);
-       // botonAnyadir.setOnClickListener(this);
+
+
 
       /*  buscador = (EditText) findViewById(R.id.busqueda);
        /* buscador = (EditText) findViewById(R.id.busqueda);
