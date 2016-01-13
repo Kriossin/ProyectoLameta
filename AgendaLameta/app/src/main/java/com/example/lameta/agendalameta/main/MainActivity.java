@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     static int dia, mes, anyo;
     public static String fecha, buscador;
     SearchView search;
-   // public static String nombre, lugar, hora;
+   //public static String nombre, lugar, hora;
+    public static int idBuscado=0;
 
     /*no funciona: capturar dia sin boton IR*/
    /* public void CalendarClick(View view) {//no va

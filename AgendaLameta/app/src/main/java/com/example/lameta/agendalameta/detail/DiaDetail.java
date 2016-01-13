@@ -74,7 +74,6 @@ public class DiaDetail extends ListActivity {
         }
         else {
             eventoLista = eventoDAO.getListaEventoPorBuscador(MainActivity.buscador);
-            Log.v("buscador", "nombre");
 
         }
 
@@ -89,9 +88,14 @@ public class DiaDetail extends ListActivity {
                 public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
 
                     evento_ID = (TextView) view.findViewById(R.id.evento_Id);
+
                     String eventoId = evento_ID.getText().toString();
+                    //Log.v("mirarID", eventoId);
+
                     Intent objIndent = new Intent(getApplicationContext(),EventoDetail.class);
                     objIndent.putExtra("evento_Id", Integer.parseInt(eventoId));//ME ACUERDO
+                    MainActivity.idBuscado = Integer.parseInt(eventoId);
+
                     startActivity(objIndent);
                 }
             });

@@ -58,7 +58,7 @@ public class EtiquetaDAO {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery = "SELECT " +
                 Etiqueta.KEY_ID + "," +
-                Etiqueta.KEY_nombre +
+                Etiqueta.KEY_nombre + "," +
                 Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE;
 
@@ -88,7 +88,7 @@ public class EtiquetaDAO {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery = "SELECT " +
                 Etiqueta.KEY_ID + "," +
-                Etiqueta.KEY_nombre +
+                Etiqueta.KEY_nombre + ","+
                 Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE +
                 " WHERE " + Etiqueta.KEY_nombre + " LIKE ?";
@@ -118,10 +118,38 @@ public class EtiquetaDAO {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery = "SELECT " +
                 Etiqueta.KEY_ID + "," +
-                Etiqueta.KEY_nombre +
+                Etiqueta.KEY_nombre + ","+
                 Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE +
                 " WHERE " + Etiqueta.KEY_ID + "=?";
+
+        int iCount = 0;
+        Etiqueta etiqueta = new Etiqueta();
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(ID)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                etiqueta.etiqueta_ID = cursor.getInt(cursor.getColumnIndex(Etiqueta.KEY_ID));
+                etiqueta.nombre = cursor.getString(cursor.getColumnIndex(Etiqueta.KEY_nombre));
+                etiqueta.id_evento = cursor.getInt(cursor.getColumnIndex(Etiqueta.KEY_ID_evento));
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return etiqueta;
+    }
+
+    public Etiqueta getEtiquetaListByIDEVENTO(int ID) {
+        //Open connection to read only
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery = "SELECT " +
+                Etiqueta.KEY_ID + "," +
+                Etiqueta.KEY_nombre + ","+
+                Etiqueta.KEY_ID_evento +
+                " FROM " + Etiqueta.TABLE +
+                " WHERE " + Etiqueta.KEY_ID_evento + "=?";
 
         int iCount = 0;
         Etiqueta etiqueta = new Etiqueta();

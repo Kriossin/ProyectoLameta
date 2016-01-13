@@ -53,9 +53,11 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
         Intent intent = getIntent();
         Evento_Id=intent.getIntExtra("Evento_Id",0);
         EventoDAO eventoDAO = new EventoDAO(this);
+        EtiquetaDAO etiquetaDAO = new EtiquetaDAO((this));
         Evento evento = new Evento();
         Etiqueta etiqueta = new Etiqueta();
-        evento = eventoDAO.getListaEventoPorID(Evento_Id);
+        evento = eventoDAO.getListaEventoPorID(MainActivity.idBuscado);
+        etiqueta = etiquetaDAO.getEtiquetaListByIDEVENTO(MainActivity.idBuscado);
 
         if(evento.nombre != null)
             editEvento.setText(String.valueOf(evento.nombre));
@@ -70,6 +72,8 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
             editHora.setText(evento.hora);
             editLugar.setText(evento.lugar);
             editEtiqueta.setText(etiqueta.nombre);
+
+        MainActivity.idBuscado = 0;
 
 
     }
@@ -92,14 +96,16 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
                 Evento_Id = eventoDAO.insert(evento);
 
                 Toast.makeText(this, "Nuevo evento creado", Toast.LENGTH_SHORT).show();
-                finish();
+
             } else {
                 eventoDAO.update(evento);
                 Toast.makeText(this, "Evento modificado", Toast.LENGTH_SHORT).show();
-                finish();
+
             }
+
             etiqueta.id_evento = Evento_Id;
             etiquetaDAO.insert(etiqueta);
+            finish();
         } else if (v == findViewById(R.id.borrar)) {
 
             EventoDAO eventoDAO = new EventoDAO(this);
