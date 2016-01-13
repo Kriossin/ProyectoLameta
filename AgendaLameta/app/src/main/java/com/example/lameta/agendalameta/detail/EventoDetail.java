@@ -32,8 +32,9 @@ public class EventoDetail extends ActionBarActivity implements android.view.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evento);
 
-        btnGuardar = (Button) findViewById(R.id.guardar);
 
+
+        btnGuardar = (Button) findViewById(R.id.guardar);
         btnBorrar = (Button) findViewById(R.id.borrar);
 
         editEvento = (EditText) findViewById(R.id.editText_Evento);
@@ -93,10 +94,10 @@ public class EventoDetail extends ActionBarActivity implements android.view.View
             eventoDAO.delete(Evento_Id);
             Toast.makeText(this, "Evento eliminado", Toast.LENGTH_SHORT).show();
             finish();
-            //  EventoDAO eventoDAO = new EventoDAO(this);
-            Evento evento = new Evento();
+
 
         }
+
     }
 
 
