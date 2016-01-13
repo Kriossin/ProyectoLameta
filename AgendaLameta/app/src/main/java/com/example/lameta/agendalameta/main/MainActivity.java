@@ -2,6 +2,7 @@ package com.example.lameta.agendalameta.main;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -29,7 +30,7 @@ import com.example.lameta.agendalameta.model.Evento;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ActionBarActivity {
     Button botonir;
     TextView evento_ID;
     EditText buscador;
@@ -45,10 +46,10 @@ public class MainActivity extends ListActivity {
 
             Intent intent = new Intent(getApplicationContext(),EventoDetail.class);
             startActivity(intent);
-            Toast.makeText(this, "holaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "vamos al dia, por click", Toast.LENGTH_SHORT).show();
 
         }else{
-            listaEventos();
+            //  listaEventos();
         }
     }
     @Override
@@ -60,11 +61,12 @@ public class MainActivity extends ListActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + (month + 1) + "/" + year, Toast.LENGTH_SHORT).show();
+
                 dia = dayOfMonth;
                 mes = month;
                 anyo = year;
                 fecha = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
+                Toast.makeText(getApplicationContext(), fecha, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -136,9 +138,9 @@ public class MainActivity extends ListActivity {
     public void onResume()
     {  // After a pause OR at startup
         super.onResume();
-        listaEventos();
+       // listaEventos();
     }
-
+/*
     public void listaEventos(){
 
         EventoDAO eventoDAO = new EventoDAO(this);
@@ -282,7 +284,7 @@ public class MainActivity extends ListActivity {
         }
     }
 
-
+*/
 
 
 
