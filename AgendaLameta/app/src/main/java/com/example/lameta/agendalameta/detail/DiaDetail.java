@@ -3,6 +3,7 @@ package com.example.lameta.agendalameta.detail;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,40 +17,37 @@ import android.widget.Toast;
 
 import com.example.lameta.agendalameta.DAO.EventoDAO;
 import com.example.lameta.agendalameta.R;
+import com.example.lameta.agendalameta.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class DiaDetail extends ListActivity implements android.view.View.OnClickListener{
+public class DiaDetail extends ListActivity {
 
     Button btnAnyadir;
     TextView tituloDia, evento_ID;
     String sDia, fecha;
 
     @Override
-    public void onClick(View v) {
-
-        if(v == findViewById(R.id.botonCrear)){
-            Intent intent = new Intent(this, EventoDetail.class);
-            intent.putExtra("tvDia_id", 0);
-            startActivity(intent);
-        }else{
-            listaEventos();
-        }
-
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dia);
-
         btnAnyadir = (Button) findViewById(R.id.botonCrear);
-        btnAnyadir.setOnClickListener(this);
+
+
+        btnAnyadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EventoDetail.class);
+                startActivity(intent);
+                intent.putExtra("fecha", fecha);
+            }
+        });
+
 
         tituloDia = (TextView) findViewById(R.id.dia);
-        tituloDia.setText(fecha);
+        tituloDia.setText(MainActivity.fecha);
 
         Bundle extra = getIntent().getExtras();
         if(extra!=null){
@@ -69,9 +67,26 @@ public class DiaDetail extends ListActivity implements android.view.View.OnClick
     public void listaEventos(){
 
         EventoDAO eventoDAO = new EventoDAO(this);
-
+        ArrayList<HashMap<String, String>> eventoLista;
         //sDia = tvDia_id.getText().toString();
-        ArrayList<HashMap<String, String>> eventoLista =  eventoDAO.getListaEventoPorFecha(fecha);
+        if(MainActivity.fecha != "") {
+            eventoLista = eventoDAO.getListaEventoPorFecha(MainActivity.fecha);
+        }
+        else {
+            eventoLista = eventoDAO.getListaEventoPorNombre(MainActivity.buscador);
+            Log.v("buscador", "nombre");
+            if (eventoLista.size()==0){
+                eventoLista = eventoDAO.getListaEventoPorEtiqueta(MainActivity.buscador);
+                Log.v("buscador", "etiqueta");
+                if (eventoLista.size()==0) {
+                    eventoLista = eventoDAO.getListaEventoPorLugar(MainActivity.buscador);
+                    Log.v("buscador", "lugar");
+                    if (eventoLista.size()==0) {
+                        Toast.makeText(this, "No hay eventos", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
 
 
         if(eventoLista.size()!=0) {
@@ -91,7 +106,7 @@ public class DiaDetail extends ListActivity implements android.view.View.OnClick
                 }
             });
 
-            ListAdapter adapter = new SimpleAdapter(DiaDetail.this,eventoLista, R.layout.activity_dia, new String[] { "id","name"}, new int[] {R.id.evento_Id, R.id.nombre_evento});
+            ListAdapter adapter = new SimpleAdapter(DiaDetail.this,eventoLista, R.layout.listiem_dia, new String[] { "id","name"}, new int[] {R.id.evento_Id, R.id.evento});
             setListAdapter(adapter);
 
 

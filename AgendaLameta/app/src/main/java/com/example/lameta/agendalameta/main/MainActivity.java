@@ -34,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
     Button botonir;
     TextView evento_ID;
-    EditText buscador;
+    //EditText buscador;
     CalendarView calendar;
     static int dia, mes, anyo;
-    public static String fecha;
+    public static String fecha, buscador;
     SearchView search;
+   // public static String nombre, lugar, hora;
 
     /*no funciona: capturar dia sin boton IR*/
    /* public void CalendarClick(View view) {//no va
@@ -88,19 +89,19 @@ public class MainActivity extends AppCompatActivity {
 
         /*buscador*/
         search=(SearchView) findViewById(R.id.busqueda);
-        search.setQueryHint("SearchView");
+        search.setQueryHint("Buscar...");
 
         /*buscador: metodos capturar la busqueda*/
+
 
         //*** setOnQueryTextFocusChangeListener ***
         search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
 
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                // TODO Auto-generated method stub
+                // TODO Auto-generated method stub //true false
 
-                Toast.makeText(getBaseContext(), String.valueOf(hasFocus),
-                        Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getBaseContext(), String.valueOf(hasFocus),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -111,8 +112,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 // TODO Auto-generated method stub
 
-                Toast.makeText(getBaseContext(), query,
-                        Toast.LENGTH_SHORT).show();
+                fecha = "";
+                buscador = query;
+
+                Intent intent = new Intent(getApplicationContext(), DiaDetail.class);
+                startActivity(intent);
+                intent.putExtra("fecha",fecha);
+
+                //Toast.makeText(getBaseContext(), query, Toast.LENGTH_SHORT).show();
 
                 return false;
             }
@@ -127,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-       /* buscador = (EditText) findViewById(R.id.busqueda);
+     /*  buscador = (EditText) findViewById(R.id.busqueda);
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

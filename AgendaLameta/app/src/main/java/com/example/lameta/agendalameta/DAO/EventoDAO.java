@@ -89,13 +89,14 @@ public class EventoDAO {
     public ArrayList<HashMap<String, String>>  getListaEventoPorNombre(String nameEventoSearch) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String selectQuery =  "SELECT  " +
+        String selectQuery =  "SELECT " +
                 Evento.KEY_ID + "," +
                 Evento.KEY_nombre + "," +
                 Evento.KEY_lugar + "," +
                 Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
-                " FROM " + Evento.KEY_nombre + " LIKE ?";
+                " FROM " + Evento.TABLE +
+                " WHERE " + Evento.KEY_nombre + " LIKE ?";
 
         ArrayList<HashMap<String, String>> eventoList = new ArrayList<HashMap<String, String>>();
 
@@ -161,7 +162,7 @@ public class EventoDAO {
                 Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.TABLE +
-                "WHERE " + Evento.KEY_lugar + " LIKE ?";
+                " WHERE " + Evento.KEY_lugar + " LIKE ?";
 
         ArrayList<HashMap<String, String>> eventoList = new ArrayList<HashMap<String, String>>();
 
@@ -194,10 +195,10 @@ public class EventoDAO {
                 Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.TABLE +
-                "WHERE " + Evento.KEY_ID + " IN(SELECT " + Etiqueta.KEY_ID_evento +
+                " WHERE " + Evento.KEY_ID + " IN(SELECT " + Etiqueta.KEY_ID_evento +
                 " FROM " + Etiqueta.TABLE +
                 " WHERE " +
-                Etiqueta.KEY_nombre + "LIKE ?)";
+                Etiqueta.KEY_nombre + " LIKE ?)";
 
         ArrayList<HashMap<String, String>> eventoList = new ArrayList<HashMap<String, String>>();
 

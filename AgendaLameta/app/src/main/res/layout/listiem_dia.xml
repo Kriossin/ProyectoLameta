@@ -27,25 +27,25 @@
             android:layout_height="wrap_content"
             >
 
-            <TextView
-                android:id="@+id/descripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="normal"
-                android:textSize="12sp"
-                android:text="Descripcion:"
-                android:paddingRight="5dp"
-                />
+            <!--<TextView-->
+                <!--android:id="@+id/descripcion"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textStyle="normal"-->
+                <!--android:textSize="12sp"-->
+                <!--android:text="Descripcion:"-->
+                <!--android:paddingRight="5dp"-->
+                <!--/>-->
 
-            <TextView
-                android:id="@+id/descripcionInf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="normal"
-                android:textSize="12sp"
-                android:text="ejemplo descripcion"
-                android:width="200dp"
-                />
+            <!--<TextView-->
+                <!--android:id="@+id/descripcionInf"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textStyle="normal"-->
+                <!--android:textSize="12sp"-->
+                <!--android:text="ejemplo descripcion"-->
+                <!--android:width="200dp"-->
+                <!--/>-->
 
     </LinearLayout>
 

@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.lameta.agendalameta.DAO.EtiquetaDAO;
 import com.example.lameta.agendalameta.DAO.EventoDAO;
 import com.example.lameta.agendalameta.R;
+import com.example.lameta.agendalameta.main.MainActivity;
 import com.example.lameta.agendalameta.model.Etiqueta;
 import com.example.lameta.agendalameta.model.Evento;
 import com.google.android.gms.appindexing.Action;
@@ -59,7 +61,12 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
             editEvento.setText(String.valueOf(evento.nombre));
         else
             editEvento.setText("");
+
+        if(evento.nombre != null)
             editFecha.setText(evento.fecha);
+        else
+            editFecha.setText(MainActivity.fecha);
+
             editHora.setText(evento.hora);
             editLugar.setText(evento.lugar);
             editEtiqueta.setText(etiqueta.nombre);
@@ -70,8 +77,9 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
     public void onClick(View v) {
         if (v == findViewById(R.id.guardar)) {
 
-          EventoDAO eventoDAO = new EventoDAO(this);
-          Evento evento = new Evento();
+            EventoDAO eventoDAO = new EventoDAO(this);
+            EtiquetaDAO etiquetaDAO = new EtiquetaDAO(this);
+            Evento evento = new Evento();
             Etiqueta etiqueta = new Etiqueta();
             evento.nombre = editEvento.getText().toString();
             evento.fecha = editFecha.getText().toString();
@@ -80,17 +88,20 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
             etiqueta.nombre = editEtiqueta.getText().toString();
             evento.evento_ID = Evento_Id;
 
-            if(Evento_Id==0){
+            if (Evento_Id == 0) {
                 Evento_Id = eventoDAO.insert(evento);
 
-                Toast.makeText(this,"Nuevo evento creado",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Nuevo evento creado", Toast.LENGTH_SHORT).show();
                 finish();
-            }else{
+            } else {
                 eventoDAO.update(evento);
-                Toast.makeText(this,"Evento modificado",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Evento modificado", Toast.LENGTH_SHORT).show();
                 finish();
             }
-            }else if(v == findViewById(R.id.borrar)) {
+            etiqueta.id_evento = Evento_Id;
+            etiquetaDAO.insert(etiqueta);
+        } else if (v == findViewById(R.id.borrar)) {
+
             EventoDAO eventoDAO = new EventoDAO(this);
             eventoDAO.delete(Evento_Id);
             Toast.makeText(this, "Evento eliminado", Toast.LENGTH_SHORT).show();
@@ -98,7 +109,6 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
 
 
         }
-
     }
 
 
