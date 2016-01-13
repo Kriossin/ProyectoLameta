@@ -23,6 +23,7 @@ public class EventoDAO {
         ContentValues values = new ContentValues();
         values.put(Evento.KEY_nombre, evento.nombre);
         values.put(Evento.KEY_lugar, evento.lugar);
+        values.put(Evento.KEY_fecha, evento.fecha);
         values.put(Evento.KEY_hora, evento.hora);
 
         long evento_ID = db.insert(Evento.TABLE, null, values);
@@ -45,6 +46,7 @@ public class EventoDAO {
 
         values.put(Evento.KEY_nombre, evento.nombre);
         values.put(Evento.KEY_lugar, evento.lugar);
+        values.put(Evento.KEY_fecha, evento.fecha);
         values.put(Evento.KEY_hora, evento.hora);
 
         db.update(Evento.TABLE, values, Evento.KEY_ID + "= ?", new String[]{String.valueOf(evento.evento_ID)});
@@ -59,6 +61,7 @@ public class EventoDAO {
                 Evento.KEY_ID + "," +
                 Evento.KEY_nombre + "," +
                 Evento.KEY_lugar + "," +
+                Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.TABLE;
 
@@ -90,6 +93,7 @@ public class EventoDAO {
                 Evento.KEY_ID + "," +
                 Evento.KEY_nombre + "," +
                 Evento.KEY_lugar + "," +
+                Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.KEY_nombre + " LIKE ?";
 
@@ -120,6 +124,7 @@ public class EventoDAO {
                 Evento.KEY_ID + "," +
                 Evento.KEY_nombre + "," +
                 Evento.KEY_lugar + "," +
+                Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.TABLE
                 + " WHERE " +
@@ -135,6 +140,7 @@ public class EventoDAO {
                 evento.evento_ID =cursor.getInt(cursor.getColumnIndex(Evento.KEY_ID));
                 evento.nombre =cursor.getString(cursor.getColumnIndex(Evento.KEY_nombre));
                 evento.lugar  =cursor.getString(cursor.getColumnIndex(Evento.KEY_lugar));
+                evento.fecha =cursor.getString(cursor.getColumnIndex(Evento.KEY_fecha));
                 evento.hora =cursor.getString(cursor.getColumnIndex(Evento.KEY_hora));
 
             } while (cursor.moveToNext());
@@ -152,6 +158,7 @@ public class EventoDAO {
                 Evento.KEY_ID + "," +
                 Evento.KEY_nombre + "," +
                 Evento.KEY_lugar + "," +
+                Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.TABLE +
                 "WHERE " + Evento.KEY_lugar + " LIKE ?";
@@ -184,6 +191,7 @@ public class EventoDAO {
                 Evento.KEY_ID + "," +
                 Evento.KEY_nombre + "," +
                 Evento.KEY_lugar + "," +
+                Evento.KEY_fecha + "," +
                 Evento.KEY_hora +
                 " FROM " + Evento.TABLE +
                 "WHERE " + Evento.KEY_ID + " IN(SELECT " + Etiqueta.KEY_ID_evento +
@@ -194,6 +202,39 @@ public class EventoDAO {
         ArrayList<HashMap<String, String>> eventoList = new ArrayList<HashMap<String, String>>();
 
         Cursor cursor = db.rawQuery(selectQuery, new String[] {"%" + nameEventoSearch + "%"});
+        // looping through all rows and adding to list
+
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> evento = new HashMap<String, String>();
+                evento.put("id", cursor.getString(cursor.getColumnIndex(Evento.KEY_ID)));
+                evento.put("name", cursor.getString(cursor.getColumnIndex(Evento.KEY_nombre)));
+                eventoList.add(evento);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return eventoList;
+
+    }
+
+    public ArrayList<HashMap<String, String>>  getListaEventoPorFecha(String nameFechaSearch) {
+        //Open connection to read only
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery =  "SELECT  " +
+                Evento.KEY_ID + "," +
+                Evento.KEY_nombre + "," +
+                Evento.KEY_lugar + "," +
+                Evento.KEY_fecha + "," +
+                Evento.KEY_hora +
+                " FROM " + Evento.TABLE +
+                " WHERE " + Evento.KEY_fecha + " LIKE ?";
+
+        ArrayList<HashMap<String, String>> eventoList = new ArrayList<HashMap<String, String>>();
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[] {"%" + nameFechaSearch + "%"});
         // looping through all rows and adding to list
 
         if (cursor.moveToFirst()) {

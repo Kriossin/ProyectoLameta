@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.lameta.agendalameta.DAO.EventoDAO;
 import com.example.lameta.agendalameta.R;
+import com.example.lameta.agendalameta.detail.DiaDetail;
 import com.example.lameta.agendalameta.detail.EventoDetail;
 import com.example.lameta.agendalameta.model.Evento;
 
@@ -29,18 +30,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends ListActivity {
+<<<<<<< HEAD
     Button botonCrear;
+=======
+>>>>>>> 9274ae974624e1ee74465e095d2870d943a350c2
     Button botonir;
-
     TextView evento_ID;
     EditText buscador;
     CalendarView calendar;
     static int dia, mes, anyo;
+    public static String fecha;
 
 
     SearchView search;
 
-    public void CalendarClick(View view) {
+    public void CalendarClick(View view) {//no va
         if (view== findViewById(R.id.calendarView1)){
 
             Intent intent = new Intent(getApplicationContext(),EventoDetail.class);
@@ -64,7 +68,7 @@ public class MainActivity extends ListActivity {
                 dia = dayOfMonth;
                 mes = month;
                 anyo = year;
-
+                fecha = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
 
 
             }
@@ -75,9 +79,10 @@ public class MainActivity extends ListActivity {
         botonir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EventoDetail.class);
+                Intent intent = new Intent(getApplicationContext(), DiaDetail.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "holaaaaaaaaaaaaaaaaaa", Toast.LENGTH_LONG).show();
+                intent.putExtra("fecha",fecha);
+                Toast.makeText(MainActivity.this, "vamos al dia", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -121,11 +126,14 @@ public class MainActivity extends ListActivity {
         });
 
 
+<<<<<<< HEAD
 
         botonCrear = (Button) findViewById(R.id.botonCrear);
        // botonAnyadir.setOnClickListener(this);
 
 
+=======
+>>>>>>> 9274ae974624e1ee74465e095d2870d943a350c2
       /*  buscador = (EditText) findViewById(R.id.busqueda);
        /* buscador = (EditText) findViewById(R.id.busqueda);
         buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {

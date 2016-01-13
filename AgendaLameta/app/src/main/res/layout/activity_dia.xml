@@ -16,9 +16,10 @@
 <!--crear un adapterEvento y crear una lista -->
 
     <ListView
-        android:id="@+id/ListaEventos"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="409dp"></ListView>
+        android:layout_height="409dp"
+        ></ListView>
 
     <Button
     android:id="@+id/botonCrear"
