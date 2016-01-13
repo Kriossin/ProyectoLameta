@@ -1,41 +1,5 @@
 package com.example.lameta.agendalameta.detail;
 
-<<<<<<< HEAD
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-
-import com.example.lameta.agendalameta.R;
-
-/**
- * Created by Usuario on 12/01/2016.
- */
-public class DiaDetail extends ActionBarActivity implements android.view.View.OnClickListener{
-
-    ListView listaEventos;
-    Button btnCrear;
-    private int Evento_Id=0;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dia);
-
-        listaEventos = (ListView) findViewById(R.id.ListaEventos);
-        btnCrear = (Button) findViewById(R.id.botonCrear);
-
-        btnCrear.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-
-=======
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,7 +33,7 @@ public class DiaDetail extends ListActivity implements android.view.View.OnClick
     @Override
     public void onClick(View v) {
 
-        if(v == findViewById(R.id.botonAñadir)){
+        if(v == findViewById(R.id.botonCrear)){
             Intent intent = new Intent(this, EventoDetail.class);
             intent.putExtra("tvDia_id", 0);
             startActivity(intent);
@@ -83,7 +47,7 @@ public class DiaDetail extends ListActivity implements android.view.View.OnClick
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dia);
-        btnAnyadir = (Button) findViewById(R.id.botonAñadir);
+        btnAnyadir = (Button) findViewById(R.id.botonCrear);
         btnAnyadir.setOnClickListener(this);
         Bundle extra = getIntent().getExtras();
         if(extra!=null){
@@ -153,6 +117,5 @@ public class DiaDetail extends ListActivity implements android.view.View.OnClick
             return true;
         }
         return super.onOptionsItemSelected(item);
->>>>>>> 9274ae974624e1ee74465e095d2870d943a350c2
     }
 }
