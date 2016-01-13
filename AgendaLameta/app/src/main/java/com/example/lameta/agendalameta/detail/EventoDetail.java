@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
  */
 public class EventoDetail extends AppCompatActivity implements android.view.View.OnClickListener{
     Button btnGuardar, btnBorrar;
+    boolean crear = false;
     EditText editEvento, editFecha, editLugar, editHora, editEtiqueta;
-    private int Evento_Id=0;
+    private int Evento_Id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +54,23 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
         Evento_Id = 0;
         Intent intent = getIntent();
         Evento_Id=intent.getIntExtra("Evento_Id",0);
+        Evento_Id = MainActivity.idBuscado;
         EventoDAO eventoDAO = new EventoDAO(this);
         EtiquetaDAO etiquetaDAO = new EtiquetaDAO((this));
         Evento evento = new Evento();
         Etiqueta etiqueta = new Etiqueta();
         evento = eventoDAO.getListaEventoPorID(MainActivity.idBuscado);
         etiqueta = etiquetaDAO.getEtiquetaListByIDEVENTO(MainActivity.idBuscado);
+        Log.v("buscador", Integer.toString(Evento_Id));
 
-        if(evento.nombre != null)
+        if(evento.nombre != null) {
             editEvento.setText(String.valueOf(evento.nombre));
-        else
+            crear = false;
+        }
+        else{
             editEvento.setText("");
+            crear = true;
+        }
 
         if(evento.nombre != null)
             editFecha.setText(evento.fecha);
@@ -92,14 +100,19 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
             etiqueta.nombre = editEtiqueta.getText().toString();
             evento.evento_ID = Evento_Id;
 
-            if (Evento_Id == 0) {
+            if (crear) {
                 Evento_Id = eventoDAO.insert(evento);
+                etiqueta.id_evento = Evento_Id;
+                etiquetaDAO.insert(etiqueta);
+                finish();
 
                 Toast.makeText(this, "Nuevo evento creado", Toast.LENGTH_SHORT).show();
 
             } else {
                 eventoDAO.update(evento);
+                Log.v("Buscador", Integer.toString(evento.evento_ID));
                 Toast.makeText(this, "Evento modificado", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
 
@@ -110,6 +123,7 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
 
             EventoDAO eventoDAO = new EventoDAO(this);
             eventoDAO.delete(Evento_Id);
+            Log.v("Buscador", Integer.toString(Evento_Id));
             Toast.makeText(this, "Evento eliminado", Toast.LENGTH_SHORT).show();
             finish();
 
