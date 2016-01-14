@@ -1,9 +1,7 @@
 package com.example.lameta.agendalameta.detail;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,9 +15,6 @@ import com.example.lameta.agendalameta.R;
 import com.example.lameta.agendalameta.main.MainActivity;
 import com.example.lameta.agendalameta.model.Etiqueta;
 import com.example.lameta.agendalameta.model.Evento;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 //import com.example.lameta.agendalameta.R;
 
@@ -61,7 +56,6 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
         Etiqueta etiqueta = new Etiqueta();
         evento = eventoDAO.getListaEventoPorID(MainActivity.idBuscado);
         etiqueta = etiquetaDAO.getEtiquetaListByIDEVENTO(MainActivity.idBuscado);
-        Log.v("buscador", Integer.toString(Evento_Id));
 
         if(evento.nombre != null) {
             editEvento.setText(String.valueOf(evento.nombre));
@@ -110,7 +104,6 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
 
             } else {
                 eventoDAO.update(evento);
-                Log.v("Buscador", Integer.toString(evento.evento_ID));
                 Toast.makeText(this, "Evento modificado", Toast.LENGTH_SHORT).show();
                 finish();
 
@@ -123,7 +116,6 @@ public class EventoDetail extends AppCompatActivity implements android.view.View
 
             EventoDAO eventoDAO = new EventoDAO(this);
             eventoDAO.delete(Evento_Id);
-            Log.v("Buscador", Integer.toString(Evento_Id));
             Toast.makeText(this, "Evento eliminado", Toast.LENGTH_SHORT).show();
             finish();
 

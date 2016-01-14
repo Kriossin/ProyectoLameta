@@ -48,7 +48,7 @@ public class EtiquetaDAO {
         values.put(Etiqueta.KEY_nombre, etiqueta.nombre);
         values.put(Etiqueta.KEY_ID_evento, etiqueta.id_evento);
 
-        //Es bueno para praacticar a usar el parametro ?, en vez de concatenar strings
+        //Es bueno para practicar a usar el parametro ?, en vez de concatenar strings
         db.update(Etiqueta.TABLE, values, Etiqueta.KEY_ID + "= ?", new String[]{String.valueOf(etiqueta.etiqueta_ID)});
         db.close(); //Cierra la conexion a la base de datos
     }

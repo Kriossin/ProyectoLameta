@@ -1,59 +1,28 @@
 package com.example.lameta.agendalameta.main;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lameta.agendalameta.DAO.EventoDAO;
 import com.example.lameta.agendalameta.R;
 import com.example.lameta.agendalameta.detail.DiaDetail;
-import com.example.lameta.agendalameta.detail.EventoDetail;
-import com.example.lameta.agendalameta.model.Evento;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
     Button botonir;
-    TextView evento_ID;
-    //EditText buscador;
     CalendarView calendar;
-    static int dia, mes, anyo;
     public static String fecha, buscador;
     SearchView search;
-   //public static String nombre, lugar, hora;
     public static int idBuscado=0;
 
-    /*no funciona: capturar dia sin boton IR*/
-   /* public void CalendarClick(View view) {//no va
-        if (view== findViewById(R.id.calendarView1)){
-
-            Intent intent = new Intent(getApplicationContext(),EventoDetail.class);
-            startActivity(intent);
-            Toast.makeText(this, "vamos al dia, por click", Toast.LENGTH_SHORT).show();
-
-        }else{
-            //  listaEventos();
-        }
-    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-
-                dia = dayOfMonth;
-                mes = month;
-                anyo = year;
                 fecha = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
                 Toast.makeText(getApplicationContext(), fecha, Toast.LENGTH_SHORT).show();
 
@@ -83,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DiaDetail.class);
                 startActivity(intent);
                 intent.putExtra("fecha",fecha);
-                Toast.makeText(MainActivity.this, "vamos al dia", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -135,21 +99,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-     /*  buscador = (EditText) findViewById(R.id.busqueda);
-        buscador.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                listaEventosPorNombre(buscador.getText().toString());
-                return true;
-            }
-        });*/
     }
     //mostrar activity al volver
     public void onResume()
     {  // After a pause OR at startup
         super.onResume();
-       // listaEventos();
     }
+
+
+    /*
+    *
+    * metodos para listar*/
 /*
     public void listaEventos(){
 
