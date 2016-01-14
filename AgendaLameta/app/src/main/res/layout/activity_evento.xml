@@ -138,9 +138,8 @@
         android:id="@+id/borrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Borrar"
         android:textSize="25sp"
-        android:background="@drawable/botonCancelar"
+        android:background="@drawable/botoncancelar"
         android:layout_marginTop="76dp"
         android:layout_below="@+id/etiqueta"
         android:layout_toRightOf="@+id/hora" />
@@ -149,12 +148,12 @@
         android:id="@+id/guardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/botonGuardar"
+        android:background="@drawable/botonguardar"
         android:layout_gravity="right"
         android:textSize="20sp"
         android:layout_alignTop="@+id/borrar"
-        android:layout_toRightOf="@+id/borrar"
-        android:layout_toEndOf="@+id/borrar" />
+        android:layout_alignRight="@+id/editText_Etiqueta"
+        android:layout_alignEnd="@+id/editText_Etiqueta" />
 
 
 
